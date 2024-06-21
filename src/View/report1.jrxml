@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="java" pageWidth="425" pageHeight="283" columnWidth="385" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="51a79649-c76f-412d-b486-e20af641fa77">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tot" class="java.lang.String"/>
+	<parameter name="pid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from OrderHistory o inner join Payment p on o.p_ID=p.P_ID as paymentid where o.P_ID=$P{pid};]]>
+	</queryString>
+	<field name="O_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="I_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qty" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_price" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="P_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="278" y="62" width="100" height="20" uuid="ad0ea49b-ce31-4fa9-ad81-e616af91c5bd"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm.ss a">
+				<reportElement x="18" y="69" width="100" height="13" uuid="58ea313e-8a5d-484a-a98c-0535ae539f0b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="137" y="22" width="96" height="40" uuid="138ff54e-32bd-4dcb-8102-a336cafe3709"/>
+				<textElement>
+					<font size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Receipt]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="28" y="19" width="71" height="20" uuid="7ae6b354-80ab-4e9c-9650-8f3ba6b5b60c"/>
+				<text><![CDATA[Receipt No: ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="0" width="100" height="20" uuid="f6ba2bd6-5e86-4755-8eeb-8827f6b2aad3"/>
+				<text><![CDATA[I_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="0" width="100" height="20" uuid="e5acd48c-ab6d-4512-8e8c-5e14ececf0f6"/>
+				<text><![CDATA[qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="0" width="100" height="20" uuid="7d67c65f-2cd4-4cb9-8577-6e924a5f210a"/>
+				<text><![CDATA[total_price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="0" width="100" height="20" uuid="93c25751-69db-4c01-bcbd-73369dad71d4"/>
+				<textFieldExpression><![CDATA[$F{I_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="137" y="0" width="100" height="20" uuid="b6e0e219-d80e-4b12-9786-35da623c0557"/>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="0" width="100" height="20" uuid="7c376a51-dd6a-48f8-b3fd-d2914b2036c8"/>
+				<textFieldExpression><![CDATA[$F{total_price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="285" y="0" width="39" height="20" uuid="a5027780-d3b8-4ccd-bcdc-bd3b89e846e9"/>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="324" y="0" width="53" height="20" uuid="0cddd880-0a91-4b47-9381-3da08a654c6e"/>
+				<textFieldExpression><![CDATA[$P{tot}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="0" width="141" height="42" uuid="7962e378-a1de-4c4b-8697-908b96cc82f2"/>
+				<text><![CDATA[MoonWok Restaurant
+21/B, Hill Street,
+Colombo 2,
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="0" width="141" height="28" uuid="c74e8f0b-0928-4bbd-aa72-185496bc41a6"/>
+				<text><![CDATA[011- 4567823, 
+moonwok3@gmail.com
+]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
